@@ -1,38 +1,328 @@
-.App {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+.login-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.register-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 7px 7px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.buttons-form {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.login-text {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.select-guests-text {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  min-height: 20px;
+  max-height: 600px;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.event-form-item-container {
+  padding: 5px;
+  display: flex;
+  border: 1px solid #ccc;
+  justify-content: space-between;
+  max-width: 150px;
+  border-radius: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.event-form-item {
+  margin-right: 10px;
+}
+
+.custom-date-input {
+  /* width: 100%; */
+  /* height: 32px; */
+  padding: 4px 11px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1.5715;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 8px;
+}
+
+.custom-date-input:hover {
+  border-color: #1890ff;
+}
+
+.event-modal {
+  /* width: 500px; */
+  /* min-height: 500px; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.event-modal-events {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 450px;
+  flex-wrap: wrap;
+}
+
+.event-modal-event-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #1890ff; /* Default background color */
+  color: #fff; /* Default text color */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Active button style (when hovered or clicked) */
+.event-modal-event-btn:hover,
+.event-modal-event-btn:active {
+  background-color: #40a9ff; /* Active background color */
+  transform: scale(1.2);
+  border: none;
+}
+
+.event-modal-info {
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.event-modal-info-name {
+  font-size: 27px;
+  font-weight: 700;
+  color: #40a9ff;
+}
+
+.event-modal-date {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.event-modal-text {
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.event-modal-date-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-image: url("./images/date.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.event-modal-author-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-image: url("./images/user.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.event-modal-guests-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-image: url("./images/guests.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.event-modal-text-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background-image: url("./images/text.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.event-modal-date-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.black-line {
+  width: calc(100% - 20px);
+  height: 1px;
+  background-color: #000;
+}
+
+.event-modal-info-guests-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.event-modal-info-guests-name {
+  gap: 10px;
+  padding: 8px;
+  flex-wrap: wrap;
+  border: 2px solid #40a9ff;
+  border-radius: 5px;
+  width:max-content;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.event-modal-info-guests-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-modal-info-des {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.event-modal-info-text {
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #40a9ff;
+  border-radius: 5px;
+  padding: 8px;
+  max-width: 400px;
+}
+
+.event-modal-info-no-events-text {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  /* height: 500px; */
+  margin-bottom: 30px;
+}
+
+.event-modal-info-no-events {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-modal-info-title {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* .event-modal-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.event-modal-author-name {
+  gap: 10px;
+  padding: 8px;
+  flex-wrap: wrap;
+  border: 2px solid #40a9ff;
+  border-radius: 5px;
+  width:max-content;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calendar-event-admin {
+  display: flex;
+  background-color:pink;
+  border: 1px solid red;
+  padding: 5px 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.calendar-event-guest {
+  display: flex;
+  background-color:lightgreen;
+  border: 1px solid green;
+  padding: 5px 20px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.event-modal-event-btn-admin {
+  border: 1px solid red;
+  background-color: pink;
+}
+
+.event-modal-event-btn-guest {
+  background-color: lightgreen;
+  border: 1px solid green;
 }
