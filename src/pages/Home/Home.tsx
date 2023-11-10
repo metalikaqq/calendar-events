@@ -72,7 +72,6 @@ const Home = () => {
         footer={null}
         onCancel={() => {
           setModalEventVisible(false);
-          console.log('modalClose');
           setIndex(0);
         }}
         destroyOnClose

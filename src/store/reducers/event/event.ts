@@ -13,25 +13,11 @@ const initialState: EventState = {
   eventsAsGuest: [],
 };
 
-// export const fetchGuests = createAsyncThunk(
-//   "auth/logout",
-//   async (_, { rejectWithValue, dispatch }) => {
-//     try {
-//       const response = await AuthService.getUsers()
-//       dispatch(setGuests(response.data))
-//     } catch (error: any) {
-//       return rejectWithValue(error.response.data.message)
-//     }
-//   }
-// )
-
 export const createEvent = createAsyncThunk(
   "event/createEvent",
   async (event: IEvent, { rejectWithValue, dispatch }) => {
     try {
       const response = await EventService.createEvents(event)
-
-      console.log(response.data)
 
       dispatch(fetchEventsForUser(event.author._id as Key))
     } catch (error: any) {
@@ -40,18 +26,6 @@ export const createEvent = createAsyncThunk(
   }
 )
 
-// export const fetchEvents = createAsyncThunk(
-//   "event/fetchEvents",
-//   async (_, { rejectWithValue, dispatch }) => {
-//     try {
-//       const response = await EventService.getEvents()
-//       dispatch(setEvents(response.data))
-//     } catch (error: any) {
-//       return rejectWithValue(error.response.data.message)
-//     }
-//   }
-// )
-
 export const fetchEventsForUser = createAsyncThunk(
   "event/fetchEventsForUser",
   async (userId: Key | undefined, { rejectWithValue, dispatch }) => {
@@ -59,7 +33,6 @@ export const fetchEventsForUser = createAsyncThunk(
 
       if (userId) {
         const response = await EventService.getEventsForUser(userId)
-        console.log(response.data)
         dispatch(setEvents(response.data))
       }
 

@@ -64,7 +64,6 @@ const EventCalendar: FC<IEventCalendarProps> = ({ events, updateInitialDate, set
     if (timeDiff < 300) {
       // Less than 300ms, consider it as a double-click
       updateInitialDate(date);
-      console.log(date);
       setModalEventVisible(true);
     }
 

@@ -22,8 +22,6 @@ const App: FC = () => {
     if (user) {
       setLoading(true);
 
-      console.log(user);
-
       dispatch(login(user))
        .then(() => {
           if (isLoginError) {

@@ -18,8 +18,6 @@ const EventModalInfo: FC<EventModalInfoProps> = ({
 }) => {
   const { events: eventsData } = useAppSelector((state) => state.event);
 
-  // console.log("sdsdsdsd", eventsData);
-
   const [selectedEvent, setSelectedEvent] = useState<IEvent | null>(null);
   const filteredEvents = useRef<IEvent[]>(
     eventsData.filter(
@@ -31,10 +29,6 @@ const EventModalInfo: FC<EventModalInfoProps> = ({
 
   useEffect(() => {
     setSelectedEvent(filteredEvents[index]);
-
-    // return () => {
-    //   console.log("EventModalInfo unmounted");
-    // };
   }, [index]);
 
   const handleSelectEvent = (event: IEvent) => () => {
@@ -43,10 +37,6 @@ const EventModalInfo: FC<EventModalInfoProps> = ({
     setIndex(eventIndex);
     setSelectedEvent(event);
   };
-
-  if (selectedEvent) {
-    console.log("AUTHOR", selectedEvent.author.username);
-  }
 
   return (
     <div className="event-modal">

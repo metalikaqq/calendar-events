@@ -47,6 +47,7 @@ const LoginForm: FC = () => {
           onChange={(e) => {
             handleSetUserName(e.target.value);
           }}
+          autoComplete="username" // Add this attribute
         />
       </Form.Item>
       <Form.Item
@@ -60,6 +61,7 @@ const LoginForm: FC = () => {
             handleSetPassword(e.target.value);
           }}
           type="password"
+          autoComplete="current-password" 
         />
       </Form.Item>
 

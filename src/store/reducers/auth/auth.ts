@@ -27,7 +27,6 @@ export const fetchUsers = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await AuthService.getUsers()
-      console.log(response.data)
 
       dispatch(setUsers(response.data))
     } catch (error: any) {
@@ -41,8 +40,6 @@ export const login = createAsyncThunk(
   async (params: IUser, { rejectWithValue }) => {
     try {
       const response = await AuthService.login(params)
-
-      console.log(response.data)
 
       if (response.status === 200) {
         localStorage.setItem('user', JSON.stringify(response.data))
@@ -100,34 +97,33 @@ export const auth = createSlice({
       state.isRegistrationError = action.payload;
     },
   },
-  extraReducers: {
-    [login.fulfilled.type]: (state, action: PayloadAction<IUser>) => {
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, (state, action: PayloadAction<IUser>) => {
       state.isLoginPending = false;
       state.isLoginError = false;
       state.isAuth = true;
       state.user = action.payload;
-    },
-    [login.pending.type]: (state) => {
+    });
+    builder.addCase(login.pending, (state) => {
       state.isLoginPending = true;
-    },
-    [login.rejected.type]: (state) => {
+    });
+    builder.addCase(login.rejected, (state) => {
       state.isLoginPending = false;
       state.isLoginError = true;
-    },
+    });
 
-
-    [registration.fulfilled.type]: (state, action: PayloadAction<IUser>) => {
+    builder.addCase(registration.fulfilled, (state, action: PayloadAction<IUser>) => {
       state.isRegistrationPending = false;
       state.isRegistrationError = false;
       state.user = action.payload;
-    },
-    [registration.pending.type]: (state) => {
+    });
+    builder.addCase(registration.pending, (state) => {
       state.isRegistrationPending = true;
-    },
-    [registration.rejected.type]: (state) => {
+    });
+    builder.addCase(registration.rejected, (state) => {
       state.isRegistrationPending = false;
       state.isRegistrationError = true;
-    }
+    });
   }
 })
 

@@ -14,20 +14,15 @@ const Navbar: FC = () => {
         {isAuth ? (
           <>
             <div style={{ color: "white" }}> {user?.username} </div>
-            <Menu theme="dark" mode="horizontal" selectable={false}>
-              <Menu.Item onClick={() => dispatch(logout())} key={1}>
-                Logout
-              </Menu.Item>
-            </Menu>
+            <Menu theme="dark" mode="horizontal" selectable={false} items={[
+              { key: 1, onClick: () => dispatch(logout()), label: "Logout" }
+            ]} />
           </>
         ) : (
           <>
-            <Menu theme="dark" mode="horizontal" selectable={false}>
-              <div style={{ color: "#001529" }}> . </div>
-              <Menu.Item key={1} onClick={() => console.log("1")}>
-                Login
-              </Menu.Item>
-            </Menu>
+            <Menu theme="dark" mode="horizontal" selectable={false} items={[
+              { key: 1, onClick: () => console.log("1"), label: "Login" }
+            ]} />
           </>
         )}
       </Row>
